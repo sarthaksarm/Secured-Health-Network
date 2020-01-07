@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/darker_grey"
+    >
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".PhoneLogin"
+        >
+
+
+    <ImageView
+        android:id="@+id/upimg"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/aggression"
+        />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SecureHealth"
+        android:fontFamily="serif"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        />
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:src="@drawable/aggression"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="5dp"
+        />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2Phone"
+        android:padding="15dp"
+        android:layout_below="@+id/upimg"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:textColor="#ffffff"
+        android:fontFamily="serif"
+        android:textSize="18dp"
+        android:text="Provide Phone no."
+        android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/textView2Phone"
+            >
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/countrycodepicker"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            app:ccp_contentColor="#fff"
+            app:ccp_defaultNameCode="IN"
+            app:ccp_flagBorderColor="#fff" />
+
+            <EditText
+                android:id="@+id/Phonenoedittext"
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="50dp"
+                android:textColorHint="@color/darker_grey"
+                android:textColor="#000"
+                android:layout_marginTop="45dp"
+                android:background="#fff"
+                android:ems="10"
+                android:fontFamily="serif"
+                android:padding="15dp"
+                android:inputType="phone"
+                android:hint="Phone No."/>
+
+        </LinearLayout>
+
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/PhoneVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2Phone"
+            android:layout_marginTop="180dp"
+            android:text="Verify"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:textSize="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignStart="@+id/textView2Phone"
+            android:layout_alignEnd="@+id/textView2Phone" />
+
+        <ProgressBar
+            android:id="@+id/progressVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/PhoneVerify"
+            />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="280dp"
+                android:padding="10dp"
+                android:textColorHint="#fff"
+                android:text="Waiting for OTP to auto-detect"
+                android:textColor="#fff"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/OTPeditText"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_below="@+id/textViewVerified"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="41dp"
+                android:ems="10"
+                android:hint="OTP Here ..."
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+            <info.hoang8f.widget.FButton
+                android:id="@+id/OTPVERIFY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/OTPeditText"
+                android:textStyle="bold"
+                android:fontFamily="serif"
+                android:textSize="16dp"
+                android:layout_alignStart="@+id/OTPeditText"
+                android:layout_alignLeft="@+id/OTPeditText"
+                android:layout_alignEnd="@+id/OTPeditText"
+                android:layout_alignRight="@+id/OTPeditText"
+                android:layout_marginTop="49dp"
+                android:text="Verify"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>
+
+</ScrollView>

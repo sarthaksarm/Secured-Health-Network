@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "964897417466",
+    "firebase_url": "https://dhealthnet-6d6dd.firebaseio.com",
+    "project_id": "dhealthnet-6d6dd",
+    "storage_bucket": "dhealthnet-6d6dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964897417466:android:936fab9cecf5a98024c143",
+        "android_client_info": {
+          "package_name": "com.sark.securedhealthnet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964897417466-9v5o4bb4k79tl8cd1t0qg38168fnkr94.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sark.securedhealthnet",
+            "certificate_hash": "116f836280120fadfcb399afd59567a09f628200"
+          }
+        },
+        {
+          "client_id": "964897417466-mbvb3vosn5crhnkmthnk505jcm01ud7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm7yBQ0VYQEniArRqE82eEInE8pps3omY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964897417466-mbvb3vosn5crhnkmthnk505jcm01ud7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
