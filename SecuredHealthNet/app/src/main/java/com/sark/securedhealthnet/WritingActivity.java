@@ -71,12 +71,13 @@ public class WritingActivity extends AppCompatActivity {
                     userWritingsRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child("desc");
                     userWritingsRef.setValue(content);
 
-
                     Intent intent = new Intent(WritingActivity.this, MainActivity.class);
                     Toast.makeText(WritingActivity.this, "Report Sent!", Toast.LENGTH_LONG).show();
+
                 //                    View parentlayout = findViewById(android.R.id.content);
 //                    Snackbar snackbar = Snackbar.make(parentlayout,"Report sent!.",Snackbar.LENGTH_LONG);
 //                    snackbar.show();
+
                     startActivity(intent);
 
                 }

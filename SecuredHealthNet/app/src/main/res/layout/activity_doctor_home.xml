@@ -80,7 +80,7 @@
                             android:id="@+id/predictortxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Patients Reports"
+                            android:text="Patients(Reports)"
                             android:textAlignment="center"
                             android:textColor="#0e0e0e"
                             android:textSize="19sp"
@@ -203,8 +203,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:text="CHAT BOX"
-                            android:textAlignment="center"
                             android:textColor="#0e0e0e"
+                            android:textAlignment="center"
                             android:textSize="19sp"
                             android:textStyle="bold"
                             />

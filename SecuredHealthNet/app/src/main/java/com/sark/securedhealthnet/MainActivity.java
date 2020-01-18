@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void decrypt(View view)
+  /*  public void decrypt(View view)
     {
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("Name");
 
@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+   */
+
     public void onClick1(View view)
     {
         Intent i;

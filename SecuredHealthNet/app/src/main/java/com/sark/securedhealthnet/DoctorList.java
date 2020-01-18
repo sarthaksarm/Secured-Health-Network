@@ -58,32 +58,32 @@ public class DoctorList extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
     }
 
-    private String decrypt(String data) throws Exception
-    {
-        SecretKeySpec key=generatekey(data);
-        Cipher c= Cipher.getInstance("AES");
-        c.init(Cipher.DECRYPT_MODE,key);
-        byte[] decodedValue= Base64.decode(data,Base64.DEFAULT);
-        byte[] decValue= c.doFinal(decodedValue);
-        String decryptedvalue= new String(decValue);
+//    private String decrypt(String data) throws Exception
+//    {
+//        SecretKeySpec key=generatekey(data);
+//        Cipher c= Cipher.getInstance("AES");
+//        c.init(Cipher.DECRYPT_MODE,key);
+//        byte[] decodedValue= Base64.decode(data,Base64.DEFAULT);
+//        byte[] decValue= c.doFinal(decodedValue);
+//        String decryptedvalue= new String(decValue);
+//
+//        return decryptedvalue;
+//    }
+//
+//    private SecretKeySpec generatekey(String data) throws Exception
+//    {
+//        final MessageDigest digest=MessageDigest.getInstance("SHA-256");
+//        byte[] bytes=data.getBytes("UTF-8");
+//        digest.update(bytes,0,bytes.length);
+//
+//        byte[] key=digest.digest();
+//
+//        SecretKeySpec secretKeySpec=new SecretKeySpec(key,"AES");
+//
+//        return secretKeySpec;
+//    }
 
-        return decryptedvalue;
-    }
-
-    private SecretKeySpec generatekey(String data) throws Exception
-    {
-        final MessageDigest digest=MessageDigest.getInstance("SHA-256");
-        byte[] bytes=data.getBytes("UTF-8");
-        digest.update(bytes,0,bytes.length);
-
-        byte[] key=digest.digest();
-
-        SecretKeySpec secretKeySpec=new SecretKeySpec(key,"AES");
-
-        return secretKeySpec;
-    }
-
-   /* @Override
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -129,7 +129,7 @@ public class DoctorList extends AppCompatActivity {
 
         public void setTitle(String title) {
             TextView post_title = (TextView) mview.findViewById(R.id.item_title);
-            post_title.setText(title);
+            post_title.setText("Dr. "+title);
         }
 
         public void setDesc(String desc) {
@@ -141,5 +141,5 @@ public class DoctorList extends AppCompatActivity {
 //            ImageView post_Image = (ImageView)mview.findViewById(R.id.item_image);
 //            Picasso.get().load(image).placeholder(R.drawable.icon).into(post_Image);
 //        }
-    }*/
+    }
 }

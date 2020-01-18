@@ -198,41 +198,51 @@ public class Register extends AppCompatActivity {
 
 
            try {
-               Toast.makeText(Register.this,"Profession= "+prof,Toast.LENGTH_SHORT).show();
+             //  Toast.makeText(Register.this,"Profession= "+prof,Toast.LENGTH_SHORT).show();
 
                ref= FirebaseDatabase.getInstance().getReference(prof);
 
                String id = phonenum;
                final String date = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(new Date());
 
+//
+//               try
+//               {
+////                        nameencypt=encrypt(nameet);
+////                        ageencrypt=encrypt(ageet);
+////                        dateencrypt=encrypt(date);
+////                        phoneencrypt=encrypt(phonenum);
+////                        areaencrypt=encrypt(areaet);
+//                 /*  nameencypt=AESUtils.encrypt(nameet);
+//                   ageencrypt=AESUtils.encrypt(ageet);
+//                   dateencrypt=AESUtils.encrypt(date);
+//                   phoneencrypt=AESUtils.encrypt(phonenum);
+//                   areaencrypt=AESUtils.encrypt(areaet);*/
+//
+//
+//               }
+//               catch (Exception e)
+//               {
+//                   e.printStackTrace();
+//               }
 
-               try
-               {
-//                        nameencypt=encrypt(nameet);
-//                        ageencrypt=encrypt(ageet);
-//                        dateencrypt=encrypt(date);
-//                        phoneencrypt=encrypt(phonenum);
-//                        areaencrypt=encrypt(areaet);
-                   nameencypt=AESUtils.encrypt(nameet);
-                   ageencrypt=AESUtils.encrypt(ageet);
-                   dateencrypt=AESUtils.encrypt(date);
-                   phoneencrypt=AESUtils.encrypt(phonenum);
-                   areaencrypt=AESUtils.encrypt(areaet);
 
-
-               }
-               catch (Exception e)
-               {
-                   e.printStackTrace();
-               }
-
-
-               ref.child(id).child("Name").setValue(nameencypt);
+              /* ref.child(id).child("Name").setValue(nameencypt);
                ref.child(id).child("Age").setValue(ageencrypt);
                ref.child(id).child("Location").setValue(areaencrypt);
                ref.child(id).child("Phone").setValue(phoneencrypt);
                ref.child(id).child("Date").setValue(dateencrypt);
                ref.child(id).child("registered").setValue("0");
+
+               */
+               ref.child(id).child("Name").setValue(nameet);
+               ref.child(id).child("Age").setValue(ageet);
+               ref.child(id).child("Location").setValue(areaet);
+               ref.child(id).child("Phone").setValue(phonenum);
+               ref.child(id).child("Date").setValue(date);
+               ref.child(id).child("registered").setValue("0");
+
+
 
                View parentLayout = findViewById(android.R.id.content);
                Snackbar snackbar = Snackbar.make(parentLayout,"Registered successfully!",Snackbar.LENGTH_LONG);

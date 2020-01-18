@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:11.8.0'
 //    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 //    implementation 'com.github.bmarrdev:android-DecoView-charting:v1.2'
-    implementation 'com.firebaseui:firebase-ui-database:3.2.2'
+    implementation 'com.firebaseui:firebase-ui-database:1.0.1'
     implementation 'ai.api:sdk:2.0.7@aar'
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation 'com.hbb20:ccp:2.1.9'
