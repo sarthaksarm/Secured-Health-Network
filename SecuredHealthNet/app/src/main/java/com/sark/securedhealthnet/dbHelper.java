@@ -16,7 +16,6 @@ public class dbHelper extends SQLiteOpenHelper{
 
     private static final String COLUMN_USER_ID = "user_id";
     private static final String COLUMN_USER_NAME = "user_name";
-    private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_USER_AREA = "user_area";
     private static final String COLUMN_USER_PHONE = "user_phone";
     private static final String COLUMN_USER_TITLE="user_title";
@@ -24,8 +23,7 @@ public class dbHelper extends SQLiteOpenHelper{
 
 
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
-            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
-            + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_AREA + " TEXT," + COLUMN_USER_PHONE+" TEXT,"+ COLUMN_USER_DESC+" TEXT,"+ COLUMN_USER_TITLE+ " TEXT"+ ")";
+            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT," + COLUMN_USER_AREA + " TEXT," + COLUMN_USER_PHONE+" TEXT,"+ COLUMN_USER_DESC+" TEXT,"+ COLUMN_USER_TITLE+ " TEXT"+ ")";
 
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
 

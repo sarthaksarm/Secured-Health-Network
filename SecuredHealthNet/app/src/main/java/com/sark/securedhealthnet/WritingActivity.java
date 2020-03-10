@@ -1,6 +1,7 @@
 package com.sark.securedhealthnet;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,8 +74,22 @@ public class WritingActivity extends AppCompatActivity {
                     //save in local db(phone)
                     User user=new User();
                     dbHelper db=new dbHelper(v.getContext());
+                    Cursor cursor=db.alldata();
+                    String area="",name="", phone="";
 
-                    user.setPhone(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                    if(cursor.getCount()!=0)
+                    {
+                        while(cursor.moveToNext())
+                        {
+                            name=cursor.getString(1);
+                            area=cursor.getString(2);
+                            phone=cursor.getString(3);
+                        }
+                    }
+
+                    user.setPhone(phone);
+                    user.setName(name);
+                    user.setArea(area);
                     user.setTitle(sTitle);
                     user.setDesc(content);
 

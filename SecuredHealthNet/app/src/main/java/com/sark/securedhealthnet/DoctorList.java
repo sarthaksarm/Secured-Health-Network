@@ -29,6 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DoctorList extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference mDatabase;
@@ -171,13 +175,15 @@ public class DoctorList extends AppCompatActivity {
                                             String key=ds.getKey().toString();        //phone number of doctor selected
                                             String uid=uphone+"";
                                             DatabaseReference refsave=FirebaseDatabase.getInstance().getReference("doctors").child(key);
+                                            final String date = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(new Date());
 
+                                            String ids=System.currentTimeMillis()+"";
                                             refsave.child("patients").child(uid).child("Name").setValue(name);
                                             refsave.child("patients").child(uid).child("Location").setValue(area);
                                             refsave.child("patients").child(uid).child("Phone").setValue(uphone);
                                             refsave.child("patients").child(uid).child("Appointment Acceptance").setValue(0);
-                                            refsave.child("patients").child(uid).child("report").child(uid).child("desc").setValue(desc);  //desc
-                                            refsave.child("patients").child(uid).child("report").child(uid).child("title").setValue(title);  //title
+                                            refsave.child("patients").child(uid).child("report").child(date).child("desc").setValue(desc);  //desc
+                                            refsave.child("patients").child(uid).child("report").child(date).child("title").setValue(title);  //title
 
 
                                             break;
