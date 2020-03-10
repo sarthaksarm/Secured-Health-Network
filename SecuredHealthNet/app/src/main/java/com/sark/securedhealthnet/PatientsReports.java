@@ -18,8 +18,11 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class PatientsReports extends AppCompatActivity {
@@ -41,34 +44,95 @@ public class PatientsReports extends AppCompatActivity {
       //  reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
 
 
+        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+
+        reforig.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String userno= dataSnapshot.getKey();
+
+                reference= reforig.child(userno).child("report");
+
+                try {
+                    FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
+                            (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
+                        @Override
+                        protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
+                            viewHolder.setTitle(model.getTitle());
+                            viewHolder.setDesc(model.getDesc());
+
+                            // viewHolder.setImage(getApplicationContext(), model.getImage());
+
+                        }
+                    };
+
+                    recyclerView.setAdapter(firebaseRecyclerAdapter);
+                }
+                catch (Exception e)
+                {
+                  //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
-        reference= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("report");
-
+        //FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        try {
-            FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
-                    (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
-                @Override
-                protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
-                    viewHolder.setTitle(model.getTitle());
-                    viewHolder.setDesc(model.getDesc());
 
-                    // viewHolder.setImage(getApplicationContext(), model.getImage());
+        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+
+        reforig.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot ds: dataSnapshot.getChildren())
+                {
+
+                    String userno= ds.getKey();
+
+                    reference= reforig.child(userno).child("report");
+
+                    try {
+                        FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
+                                (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
+                            @Override
+                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
+                                viewHolder.setTitle(model.getTitle());
+                                viewHolder.setDesc(model.getDesc());
+
+                                // viewHolder.setImage(getApplicationContext(), model.getImage());
+
+                            }
+                        };
+
+                        recyclerView.setAdapter(firebaseRecyclerAdapter);
+                    }
+                    catch (Exception e)
+                    {
+                        //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
-            };
 
-        recyclerView.setAdapter(firebaseRecyclerAdapter);
-    }
-        catch (Exception e)
-        {
-            Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
-        }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
@@ -85,9 +149,13 @@ public class PatientsReports extends AppCompatActivity {
                     try {
                         TextView post_desc = (TextView) mview.findViewById(R.id.item_desc);
 
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(post_desc.getText().toString()));
+                        Intent i = new Intent(itemView.getContext(),UserProfile.class);
+                        i.putExtra("pos",getLayoutPosition());
+
                         itemView.getContext().startActivity(i);
+
+                        //open users profile page
+
                     }
                     catch (Exception e)
                     {

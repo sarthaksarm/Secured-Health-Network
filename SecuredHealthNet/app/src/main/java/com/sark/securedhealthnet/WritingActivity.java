@@ -98,9 +98,6 @@ public class WritingActivity extends AppCompatActivity {
                     Intent intent = new Intent(WritingActivity.this, MainActivity.class);
                     Toast.makeText(WritingActivity.this, "Report saved!", Toast.LENGTH_LONG).show();
 
-                    //    View parentlayout = findViewById(android.R.id.content);
-//                    Snackbar snackbar = Snackbar.make(parentlayout,"Report sent!.",Snackbar.LENGTH_LONG);
-//                    snackbar.show();
 
                     startActivity(intent);
 
