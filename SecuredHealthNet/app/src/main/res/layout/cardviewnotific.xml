@@ -25,7 +25,7 @@
 
         <RelativeLayout
             android:id="@+id/img"
-            android:background="#000"
+            android:background="@color/darker_grey"
             android:layout_width="match_parent"
             android:layout_height="300dp">
 

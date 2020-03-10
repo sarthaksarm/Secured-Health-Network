@@ -38,7 +38,13 @@ public class PatientsReports extends AppCompatActivity {
         linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
+      //  reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
+
+
+
+
+        reference= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("report");
+
     }
 
     @Override
@@ -51,6 +57,7 @@ public class PatientsReports extends AppCompatActivity {
                 protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
                     viewHolder.setTitle(model.getTitle());
                     viewHolder.setDesc(model.getDesc());
+
                     // viewHolder.setImage(getApplicationContext(), model.getImage());
 
                 }
@@ -109,5 +116,3 @@ public class PatientsReports extends AppCompatActivity {
 //        }
     }
 }
-
-

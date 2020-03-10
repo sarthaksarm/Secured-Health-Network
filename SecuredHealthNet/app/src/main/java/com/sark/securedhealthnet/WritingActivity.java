@@ -51,28 +51,27 @@ public class WritingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String id=System.currentTimeMillis()+"";
                 //Send data to firebase
-                contentWritingRef = FirebaseDatabase.getInstance().getReference("doctors");
+                contentWritingRef = FirebaseDatabase.getInstance().getReference("users");
                 try
                 {
-
-                    titleRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child("title");
+                    titleRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child(id).child("title");
 
                 String sTitle = titleEditText.getText().toString().trim();
                 String content = contentEditText.getText().toString().trim();
 
                 if (sTitle.equals("") || content.equals(""))
                 {
-                    Toast.makeText(WritingActivity.this,"Title and Content cannot be empty",Toast.LENGTH_LONG).show();
+                    Toast.makeText(WritingActivity.this,"Title or Content cannot be empty",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                     titleRef.setValue(sTitle);
                             //id-> FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()
-                    userWritingsRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child("desc");
+                    userWritingsRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child(id).child("desc");
                     userWritingsRef.setValue(content);
 
                     Intent intent = new Intent(WritingActivity.this, MainActivity.class);
-                    Toast.makeText(WritingActivity.this, "Report Sent!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(WritingActivity.this, "Report saved!", Toast.LENGTH_LONG).show();
 
                 //                    View parentlayout = findViewById(android.R.id.content);
 //                    Snackbar snackbar = Snackbar.make(parentlayout,"Report sent!.",Snackbar.LENGTH_LONG);

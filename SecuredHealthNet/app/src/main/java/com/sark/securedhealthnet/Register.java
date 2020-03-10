@@ -274,7 +274,6 @@ public class Register extends AppCompatActivity {
                        }
 
                 user.setName(nameet);
-                user.setEmail(prof);
                 user.setArea(areaet);
                 user.setPhone(phonenum);
                 user.setWritings(0);

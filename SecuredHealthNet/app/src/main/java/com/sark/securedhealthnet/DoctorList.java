@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Base64;
@@ -18,14 +19,11 @@ import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-
-import java.security.MessageDigest;
-
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import com.google.firebase.database.ValueEventListener;
 
 public class DoctorList extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -95,8 +93,8 @@ public class DoctorList extends AppCompatActivity {
                 String desc=model.getLocation();
 
 //               try {
-////                   namedecrypt = decrypt(name);
-////                   descdecrypt = decrypt(desc);
+//                   namedecrypt = decrypt(name);
+//                   descdecrypt = decrypt(desc);
 //
 //                   namedecrypt=AESUtils.decrypt(name);
 //                   descdecrypt=AESUtils.decrypt(desc);
@@ -109,22 +107,86 @@ public class DoctorList extends AppCompatActivity {
 //               }
                viewHolder.setTitle(name);
                 viewHolder.setDesc(desc);
-
-
             }
         };
+
         recyclerView.setAdapter(firebaseRecyclerAdapter);
         progressBar.setVisibility(View.INVISIBLE);
 
     }
 
 
-    public static class BlogViewHolder extends RecyclerView.ViewHolder {
+    public static class BlogViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         View mview;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mview = itemView;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    final int pos= getLayoutPosition();
+                    //Toast.makeText(v.getContext(),"Pos= "+pos,Toast.LENGTH_LONG).show();
+
+                    //sending report to doctor selected!
+
+                    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("doctors");
+
+                    ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            int j=0;
+
+                            String name="",area="", uphone="", reports="";
+                            dbHelper db = new dbHelper(v.getContext());
+                            Cursor cursor = db.alldata();
+
+                            if (cursor.getCount() != 0) {
+                                while (cursor.moveToNext()) {
+                                    name = cursor.getString(1);
+                                    uphone = cursor.getString(3);
+                                    reports = cursor.getString(4);
+                                }
+                            }
+
+
+                            for(DataSnapshot ds: dataSnapshot.getChildren())
+                            {
+                                if(j==pos)
+                                {
+                                    String key=ds.getKey().toString();        //phone number of doctor selected
+                                    String uid=System.currentTimeMillis()+"";
+                                    DatabaseReference refsave=FirebaseDatabase.getInstance().getReference("doctors").child(key);
+
+                                    refsave.child("patients").child(uid).child("Name").setValue(name);
+                                    refsave.child("patients").child(uid).child("Phone").setValue(uphone);
+                                    refsave.child("patients").child(uid).child("accepted").setValue(0);
+                                    refsave.child("patients").child(uid).child("report").child(uid).child("desc").setValue(reports);  //desc
+                                    //refsave.child("patients").child(uid).child("report").child(uid).child("title").setValue();  //title
+
+
+                                    break;
+                                }
+
+                                else
+                                    j++;
+
+                            }
+
+                            //got node
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+            });
         }
 
         public void setTitle(String title) {
@@ -137,8 +199,13 @@ public class DoctorList extends AppCompatActivity {
             post_desc.setText(desc);
         }
 
+        @Override
+        public void onClick(View v) {
+
+        }
+
 //        public void setImage(Context ctx, String image) {
-//            ImageView post_Image = (ImageView)mview.findViewById(R.id.item_image);
+//            ImageView post_Image = (ImageView                             )mview.findViewById(R.id.item_image);
 //            Picasso.get().load(image).placeholder(R.drawable.icon).into(post_Image);
 //        }
     }

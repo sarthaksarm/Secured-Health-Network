@@ -74,7 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/patient" />
 
                         <TextView
                             android:id="@+id/predictortxt"
@@ -157,7 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/reminder" />
 
                         <TextView
                             android:id="@+id/remindertxt"
@@ -196,7 +196,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/chatbox" />
 
                         <TextView
                             android:id="@+id/bottxt"
@@ -233,7 +233,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="180dp"
-                            android:background="@drawable/aggression"
+                            android:background="@drawable/about"
                             />
 
                         <TextView

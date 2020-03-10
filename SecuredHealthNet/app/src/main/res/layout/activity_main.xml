@@ -79,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/submitreport" />
 
                         <TextView
                             android:id="@+id/predictortxt"
@@ -117,7 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/hospitalsnearby" />
 
                         <TextView
                             android:id="@+id/infotxt"
@@ -156,7 +156,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145sp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/doctors" />
 
                         <TextView
                             android:id="@+id/upltxt"
@@ -197,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/reminder" />
 
                         <TextView
                             android:id="@+id/remindertxt"
@@ -236,7 +236,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="140dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/aggression" />
+                            android:background="@drawable/chatbox" />
 
                         <TextView
                             android:id="@+id/bottxt"
@@ -273,8 +273,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="145dp"
-                            android:background="@drawable/aggression"
-                            />
+                            android:background="@drawable/about" />
 
                         <TextView
                             android:id="@+id/abouttxt"

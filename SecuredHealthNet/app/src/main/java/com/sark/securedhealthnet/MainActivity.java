@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick5(View view)
     {
+        Toast.makeText(MainActivity.this,"Work in progress!",Toast.LENGTH_LONG).show();
 
     }
 

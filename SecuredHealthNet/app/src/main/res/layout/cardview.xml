@@ -39,6 +39,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/item_title"
             android:textColor="#fff"
+            android:textStyle="bold"
+            android:fontFamily="serif"
             android:layout_centerHorizontal="true"
             android:textSize="30sp"
             />
@@ -57,7 +59,8 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:id="@+id/item_desc"
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
+            android:fontFamily="serif"
             android:textColor="#D2691E"
             android:text=""
             android:textSize="23dp"

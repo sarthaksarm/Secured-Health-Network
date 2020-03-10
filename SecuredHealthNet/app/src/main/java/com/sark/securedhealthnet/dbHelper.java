@@ -47,7 +47,7 @@ public class dbHelper extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_USER_NAME, user.getName());
-        values.put(COLUMN_USER_EMAIL, user.getEmail());
+       // values.put(COLUMN_USER_EMAIL, user.getEmail());
         values.put(COLUMN_USER_AREA, user.getArea());
         values.put(COLUMN_USER_PHONE,user.getPhone());
         values.put(COLUMN_USER_WRITINGS,user.getWritings());
