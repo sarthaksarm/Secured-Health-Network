@@ -5,14 +5,23 @@ public class User {
     private String name;
     private String area;
     private String phone;
-    private int writings;
+    private String title;
+    private String desc;
 
-    public int getWritings() {
-        return writings;
+    public String getTitle() {
+        return title;
     }
 
-    public void setWritings(int writings) {
-        this.writings = writings;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getName(){

@@ -276,7 +276,8 @@ public class Register extends AppCompatActivity {
                 user.setName(nameet);
                 user.setArea(areaet);
                 user.setPhone(phonenum);
-                user.setWritings(0);
+                user.setTitle("");
+                user.setDesc("");
 
                 db.addUser(user);
 

@@ -70,10 +70,20 @@ public class WritingActivity extends AppCompatActivity {
                     userWritingsRef = contentWritingRef.child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report").child(id).child("desc");
                     userWritingsRef.setValue(content);
 
+                    //save in local db(phone)
+                    User user=new User();
+                    dbHelper db=new dbHelper(v.getContext());
+
+                    user.setPhone(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                    user.setTitle(sTitle);
+                    user.setDesc(content);
+
+                     db.addUser(user);
+
                     Intent intent = new Intent(WritingActivity.this, MainActivity.class);
                     Toast.makeText(WritingActivity.this, "Report saved!", Toast.LENGTH_LONG).show();
 
-                //                    View parentlayout = findViewById(android.R.id.content);
+                    //    View parentlayout = findViewById(android.R.id.content);
 //                    Snackbar snackbar = Snackbar.make(parentlayout,"Report sent!.",Snackbar.LENGTH_LONG);
 //                    snackbar.show();
 

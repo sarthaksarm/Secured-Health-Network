@@ -1,11 +1,14 @@
 package com.sark.securedhealthnet;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -105,7 +109,7 @@ public class DoctorList extends AppCompatActivity {
 //                   e.printStackTrace();
 //                   Toast.makeText(DoctorList.this, "Exception occurred!", Toast.LENGTH_SHORT).show();
 //               }
-               viewHolder.setTitle(name);
+                viewHolder.setTitle(name);
                 viewHolder.setDesc(desc);
             }
         };
@@ -126,64 +130,82 @@ public class DoctorList extends AppCompatActivity {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
-                    final int pos= getLayoutPosition();
-                    //Toast.makeText(v.getContext(),"Pos= "+pos,Toast.LENGTH_LONG).show();
 
-                    //sending report to doctor selected!
+                    AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                    builder.setMessage("Are you sure you want to send report to this doctor and set appointment?");
+                    builder.setCancelable(false);
 
-                    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("doctors");
-
-                    ref.addValueEventListener(new ValueEventListener() {
+                    builder.setNegativeButton("Send", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            int j=0;
+                        public void onClick(DialogInterface dialog, int which) {
 
-                            String name="",area="", uphone="", reports="";
-                            dbHelper db = new dbHelper(v.getContext());
-                            Cursor cursor = db.alldata();
+                            final int pos= getLayoutPosition();
+                            Toast.makeText(v.getContext(), "Report sent!", Toast.LENGTH_SHORT).show();
 
-                            if (cursor.getCount() != 0) {
-                                while (cursor.moveToNext()) {
-                                    name = cursor.getString(1);
-                                    uphone = cursor.getString(3);
-                                    reports = cursor.getString(4);
+                            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("doctors");
+
+                            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    int j=0;
+                                    String name="",area="", uphone="", desc="", title="";
+                                    dbHelper db = new dbHelper(v.getContext());
+                                    Cursor cursor = db.alldata();
+
+                                    if (cursor.getCount() != 0) {
+                                        while (cursor.moveToNext()) {
+                                            name = cursor.getString(1);
+                                            area=cursor.getString(2);
+                                            uphone = cursor.getString(3);
+                                            title = cursor.getString(4);
+                                            desc = cursor.getString(5);
+
+                                        }
+                                    }
+
+                                    for(DataSnapshot ds: dataSnapshot.getChildren())
+                                    {
+                                        if(j==pos)
+                                        {
+                                            String key=ds.getKey().toString();        //phone number of doctor selected
+                                            String uid=uphone+"";
+                                            DatabaseReference refsave=FirebaseDatabase.getInstance().getReference("doctors").child(key);
+
+                                            refsave.child("patients").child(uid).child("Name").setValue(name);
+                                            refsave.child("patients").child(uid).child("Location").setValue(area);
+                                            refsave.child("patients").child(uid).child("Phone").setValue(uphone);
+                                            refsave.child("patients").child(uid).child("Appointment Acceptance").setValue(0);
+                                            refsave.child("patients").child(uid).child("report").child(uid).child("desc").setValue(desc);  //desc
+                                            refsave.child("patients").child(uid).child("report").child(uid).child("title").setValue(title);  //title
+
+
+                                            break;
+                                        }
+
+                                        else
+                                            j++;
+
+                                    }
+
                                 }
-                            }
 
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-                            for(DataSnapshot ds: dataSnapshot.getChildren())
-                            {
-                                if(j==pos)
-                                {
-                                    String key=ds.getKey().toString();        //phone number of doctor selected
-                                    String uid=System.currentTimeMillis()+"";
-                                    DatabaseReference refsave=FirebaseDatabase.getInstance().getReference("doctors").child(key);
-
-                                    refsave.child("patients").child(uid).child("Name").setValue(name);
-                                    refsave.child("patients").child(uid).child("Phone").setValue(uphone);
-                                    refsave.child("patients").child(uid).child("accepted").setValue(0);
-                                    refsave.child("patients").child(uid).child("report").child(uid).child("desc").setValue(reports);  //desc
-                                    //refsave.child("patients").child(uid).child("report").child(uid).child("title").setValue();  //title
-
-
-                                    break;
                                 }
-
-                                else
-                                    j++;
-
-                            }
-
-                            //got node
-
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
+                            });
                         }
                     });
+
+                    builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alertdialog = builder.create();
+                    alertdialog.show();
 
                 }
             });
