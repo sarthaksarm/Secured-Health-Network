@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sark.securedhealthnet">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -9,9 +11,17 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserProfile"></activity>
-        <activity android:name=".PatientsAssocList" />
-        <activity android:name=".DoctorHome">
+
+<!--        <receiver android:name=".CameraBroadCastReceiver">-->
+
+<!--            <intent-filter>-->
+<!--                <action android:name="com.android.camera.NEW_PICTURE" />-->
+<!--                <action android:name="android.hardware.action.NEW_PICTURE" />-->
+<!--                <data android:mimeType="image/*"/>-->
+
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+        <activity android:name=".DoctorList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,19 +40,22 @@
         <activity android:name=".Register" />
         <activity android:name=".EditAlarm" />
         <activity android:name=".Preferences" />
-        <activity android:name=".DoctorList" />
+        <activity android:name=".Notification" />
+        <activity android:name=".DoctorHome" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".PatientsAssocList" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-Lh6HOjbTmwFx1GyTcQiJmBdyViIf5IE" />
     </application>
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 </manifest>
