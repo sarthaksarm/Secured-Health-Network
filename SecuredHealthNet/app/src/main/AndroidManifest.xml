@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DoctorList">
+        <activity android:name=".DoctorHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +29,7 @@
         <activity android:name=".EditAlarm" />
         <activity android:name=".Preferences" />
         <activity android:name=".Notification" />
-        <activity android:name=".DoctorHome" />
+        <activity android:name=".DoctorList" />
         <activity android:name=".UserProfile" />
         <activity android:name=".PatientsAssocList" />
 

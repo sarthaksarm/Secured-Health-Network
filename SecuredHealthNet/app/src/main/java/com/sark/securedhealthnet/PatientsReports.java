@@ -1,5 +1,6 @@
 package com.sark.securedhealthnet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +33,8 @@ public class PatientsReports extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ProgressBar progressBar;
+    FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter;
+    public static int positionclicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,66 +47,20 @@ public class PatientsReports extends AppCompatActivity {
       //  reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
 
 
-        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+//        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
 
         reforig.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String userno= dataSnapshot.getKey();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                reference= reforig.child(userno).child("report");
+                    String userno = ds.getKey();
 
-                try {
-                    FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
-                            (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
-                        @Override
-                        protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
-                            viewHolder.setTitle(model.getTitle());
-                            viewHolder.setDesc(model.getDesc());
-
-                            // viewHolder.setImage(getApplicationContext(), model.getImage());
-
-                        }
-                    };
-
-                    recyclerView.setAdapter(firebaseRecyclerAdapter);
-                }
-                catch (Exception e)
-                {
-                  //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-        //FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
-
-        reforig.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot ds: dataSnapshot.getChildren())
-                {
-
-                    String userno= ds.getKey();
-
-                    reference= reforig.child(userno).child("report");
+                    reference = reforig.child(userno).child("report");
 
                     try {
-                        FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
+                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
                                 (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
                             @Override
                             protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
@@ -115,17 +72,84 @@ public class PatientsReports extends AppCompatActivity {
                             }
                         };
 
-                        recyclerView.setAdapter(firebaseRecyclerAdapter);
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
                     }
 
-
                 }
+                recyclerView.setAdapter(firebaseRecyclerAdapter);
 
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+
+        reforig.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot ds: dataSnapshot.getChildren())
+                {
+                    String userno= ds.getKey();
+                    reference= reforig.child(userno).child("report");
+
+                    try {
+                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
+                                (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
+                            @Override
+                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
+                                viewHolder.setTitle(model.getTitle());
+                                viewHolder.setDesc(model.getDesc());
+
+                                // viewHolder.setImage(getApplicationContext(), model.getImage());
+                            }
+
+                            @Override
+                            public void onBindViewHolder(@NonNull final BlogViewHolder viewHolder, final int position) {
+                                super.onBindViewHolder(viewHolder, position);
+                                positionclicked=viewHolder.getAdapterPosition();
+
+                                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        try {
+                                            Intent i = new Intent(PatientsReports.this,UserProfile.class);
+                                            i.putExtra("pos",position);
+                                            Toast.makeText(PatientsReports.this, "Position= "+position, Toast.LENGTH_SHORT).show();
+                                            startActivity(i);
+
+                                            //open users profile page
+
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            View parentlayout = view.findViewById(android.R.id.content);
+                                            Snackbar snackbar = Snackbar.make(parentlayout,"Try again after sometime!", Snackbar.LENGTH_LONG);
+                                            snackbar.show();
+                                        }
+                                    }
+                                });
+                            }
+
+                        };
+
+                    }
+                    catch (Exception e) {
+                        //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                recyclerView.setAdapter(firebaseRecyclerAdapter);
             }
 
             @Override
@@ -142,29 +166,12 @@ public class PatientsReports extends AppCompatActivity {
             super(itemView);
             mview = itemView;
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    try {
-                        TextView post_desc = (TextView) mview.findViewById(R.id.item_desc);
-
-                        Intent i = new Intent(itemView.getContext(),UserProfile.class);
-                        i.putExtra("pos",getLayoutPosition());
-
-                        itemView.getContext().startActivity(i);
-
-                        //open users profile page
-
-                    }
-                    catch (Exception e)
-                    {
-                        View parentlayout = itemView.findViewById(android.R.id.content);
-                        Snackbar snackbar = Snackbar.make(parentlayout,"Try again after sometime!", Snackbar.LENGTH_LONG);
-                        snackbar.show();
-                    }
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
         }
 
         public void setTitle(String title) {

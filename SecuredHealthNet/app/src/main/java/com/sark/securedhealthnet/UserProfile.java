@@ -3,6 +3,7 @@ package com.sark.securedhealthnet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,18 +23,18 @@ public class UserProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+        String id=getIntent().getExtras().get("pos").toString();
 
-        final int pos=Integer.parseInt(getIntent().getStringExtra("pos"));
+        final int pos=Integer.parseInt(id);
 
-        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
-
+//        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
 
         reforig.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 int j=0;
-
 
                 for(DataSnapshot ds: dataSnapshot.getChildren())
                 {
@@ -43,8 +44,7 @@ public class UserProfile extends AppCompatActivity {
                         String phonenum= ds.getKey();
 
                         //Bravo! Now easy! display user profile!!
-
-
+                        Toast.makeText(UserProfile.this, "You are user: "+ phonenum, Toast.LENGTH_SHORT).show();
 
                         break;
                     }
