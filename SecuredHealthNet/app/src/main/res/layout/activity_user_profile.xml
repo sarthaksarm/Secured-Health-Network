@@ -1,9 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile">
+    android:padding="10dp"
+    android:background="@color/btncolor"
+    tools:context=".UserProfile"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgicon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/about"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/namelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_below="@+id/imgicon"
+        >
+
+    <TextView
+        android:id="@+id/nametxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:fontFamily="serif"
+        android:textSize="26dp"
+        />
+
+        <TextView
+            android:id="@+id/nameedittxt"
+            android:layout_marginStart="100dp"
+            android:layout_width="match_parent"
+            android:text=" "
+            android:textStyle="bold"
+            android:textSize="24dp"
+            android:layout_height="wrap_content"
+            />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/agelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/namelayout"
+        >
+
+        <TextView
+            android:id="@+id/agetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            />
+
+        <TextView
+            android:id="@+id/ageedittxt"
+            android:layout_marginStart="125dp"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:text=" "
+            android:textSize="24dp"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/locatlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/agelayout"
+        >
+
+        <TextView
+            android:id="@+id/locattxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            />
+
+        <TextView
+            android:id="@+id/locatedittxt"
+            android:layout_marginStart="65dp"
+            android:layout_width="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:text=" "
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/appointlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locatlayout"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        >
+
+        <TextView
+            android:id="@+id/appointtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Appointment"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            />
+
+            <RadioGroup
+                android:layout_marginStart="5dp"
+                android:id="@+id/appointradiogrp"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+                <RadioButton
+                    android:id="@+id/setrdbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ACCEPT"
+                    android:textStyle="bold"
+                    android:textSize="13.5dp"
+                    />
+                <RadioButton
+                    android:id="@+id/unsetrdbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REJECT"
+                    android:textStyle="bold"
+                    android:textSize="13.5dp"
+                    />
+
+            </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/healthrecordtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appointlayout"
+        android:text="Health Records:"
+        android:fontFamily="serif"
+        android:textSize="26dp"
+        android:layout_marginTop="30dp"
+        />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/healthrecordtxt"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_viewreport"
+                />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</RelativeLayout>
+
+
+</ScrollView>
