@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="@color/btncolor"
+    android:background="@color/mic_button_halo"
     tools:context=".UserProfile"
     >
 
