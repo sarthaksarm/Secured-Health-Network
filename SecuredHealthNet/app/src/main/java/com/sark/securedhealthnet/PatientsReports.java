@@ -2,6 +2,7 @@ package com.sark.securedhealthnet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,7 +16,6 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +33,7 @@ public class PatientsReports extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ProgressBar progressBar;
-    FirebaseRecyclerAdapter<BlogReport, BlogViewHolder> firebaseRecyclerAdapter;
+    FirebaseRecyclerAdapter<BlogPatientPro, BlogViewHolder> firebaseRecyclerAdapter;
     public static int positionclicked;
 
     @Override
@@ -41,44 +41,41 @@ public class PatientsReports extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patients_reports);
         recyclerView=findViewById(R.id.recycler_view);
-        linearLayoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
 
-      //  reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
+        GridLayoutManager gridLayoutManager =new GridLayoutManager(this,2,RecyclerView.VERTICAL,false);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
+//      reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
+//      final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
-//        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
-        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+        final DatabaseReference reforig = FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
 
         reforig.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
                     String userno = ds.getKey();
 
-                    reference = reforig.child(userno).child("report");
+                    DatabaseReference refpatient = FirebaseDatabase.getInstance().getReference("users").child(userno);
 
                     try {
-                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
-                                (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
+                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder>
+                                (BlogPatientPro.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, refpatient) {
                             @Override
-                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
-                                viewHolder.setTitle(model.getTitle());
-                                viewHolder.setDesc(model.getDesc());
+                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogPatientPro model, int position) {
+                                viewHolder.setTitle(model.getName());
+                                viewHolder.setDesc(model.getDate());
 
                                 // viewHolder.setImage(getApplicationContext(), model.getImage());
-
                             }
                         };
-
-                    } catch (Exception e) {
+                    }
+                    catch (Exception e) {
                         //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 recyclerView.setAdapter(firebaseRecyclerAdapter);
-
             }
 
             @Override
@@ -103,14 +100,15 @@ public class PatientsReports extends AppCompatActivity {
                 {
                     String userno= ds.getKey();
                     reference= reforig.child(userno).child("report");
+                    DatabaseReference refpatient = FirebaseDatabase.getInstance().getReference("users").child(userno);
 
                     try {
-                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>
-                                (BlogReport.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reference) {
+                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder>
+                                (BlogPatientPro.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, refpatient) {
                             @Override
-                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogReport model, int position) {
-                                viewHolder.setTitle(model.getTitle());
-                                viewHolder.setDesc(model.getDesc());
+                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogPatientPro model, int position) {
+                                viewHolder.setTitle(model.getName());
+                                viewHolder.setDesc(model.getDate());
 
                                 // viewHolder.setImage(getApplicationContext(), model.getImage());
                             }
@@ -130,7 +128,6 @@ public class PatientsReports extends AppCompatActivity {
                                             startActivity(i);
 
                                             //open users profile page
-
                                         }
                                         catch (Exception e)
                                         {
@@ -141,12 +138,14 @@ public class PatientsReports extends AppCompatActivity {
                                     }
                                 });
                             }
-
                         };
 
                     }
                     catch (Exception e) {
-                        //  Toast.makeText(this, "No reports received till now!", Toast.LENGTH_SHORT).show();
+                        Intent i=new Intent(PatientsReports.this,MainActivity.class);
+                        startActivity(i);
+
+                        Toast.makeText(PatientsReports.this, "Exception: "+e, Toast.LENGTH_SHORT).show();
                     }
                 }
                 recyclerView.setAdapter(firebaseRecyclerAdapter);
@@ -165,13 +164,6 @@ public class PatientsReports extends AppCompatActivity {
         public BlogViewHolder(final View itemView) {
             super(itemView);
             mview = itemView;
-
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
         }
 
         public void setTitle(String title) {
@@ -183,11 +175,5 @@ public class PatientsReports extends AppCompatActivity {
             TextView post_desc = (TextView) mview.findViewById(R.id.item_desc);
             post_desc.setText(desc);
         }
-
-//        public void setImage(final Context ctx, final String image) {
-//            final ImageView post_Image = (ImageView)mview.findViewById(R.id.item_image);
-//
-//            Picasso.get().load(image).placeholder(R.drawable.icon).into(post_Image);
-//        }
     }
 }

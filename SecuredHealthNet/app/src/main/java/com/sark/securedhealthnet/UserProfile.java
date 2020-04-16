@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +30,12 @@ public class UserProfile extends AppCompatActivity {
     GridLayoutManager gridLayoutManager;
     ProgressBar progressBar;
     FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder> firebaseRecyclerAdapter;
+    RadioGroup rg;
+    RadioButton rbaccept,rbreject;
+    String phone;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
@@ -38,15 +43,53 @@ public class UserProfile extends AppCompatActivity {
         gridLayoutManager=new GridLayoutManager(this,2,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        nametxt=findViewById(R.id.nameedittxt);
-        agetxt=findViewById(R.id.ageedittxt);
-        locattxt=findViewById(R.id.locatedittxt);
-
         String id=getIntent().getExtras().get("pos").toString();
 
         final int pos=Integer.parseInt(id);
+        setphone(pos);
 
 //      final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+
+
+        nametxt=findViewById(R.id.nameedittxt);
+        agetxt=findViewById(R.id.ageedittxt);
+        locattxt=findViewById(R.id.locatedittxt);
+        rg=findViewById(R.id.appointradiogrp);
+        rbaccept=findViewById(R.id.setrdbtn);
+        rbreject=findViewById(R.id.unsetrdbtn);
+
+        rg.clearCheck();
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton checkbtn = radioGroup.findViewById(i);
+                boolean check = checkbtn.isChecked();
+                int value=0;
+
+                if (check) {
+
+                    if(checkbtn.getText().equals("ACCEPT"))
+                        value=1;
+
+                    reforig.child(phone).child("Appointment Acceptance").setValue(value);
+
+                    if(value==1)
+                    Toast.makeText(UserProfile.this, "Accepted", Toast.LENGTH_SHORT).show();
+
+                    else
+                        Toast.makeText(UserProfile.this, "Rejected", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+        });
+
+    }
+
+    public void setphone(final int pos)
+    {
         final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
 
         reforig.addValueEventListener(new ValueEventListener() {
@@ -58,10 +101,10 @@ public class UserProfile extends AppCompatActivity {
                     if (j == pos) {
                         //madi
                         String phonenum = ds.getKey();
+                        phone=phonenum;
 
-                        //Bravo! Now easy! display user profile!!
-                        load(phonenum);
-                        loadreports(phonenum);
+                        load(phone);
+                        loadreports(phone);
 
                         break;
                     } else
@@ -75,9 +118,7 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
-
     }
-
     public void loadreports(final String phone)
     {
         //        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");

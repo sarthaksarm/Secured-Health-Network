@@ -8,6 +8,7 @@ public class User {
     private String title;
     private String desc;
 
+
     public String getTitle() {
         return title;
     }
@@ -22,6 +23,11 @@ public class User {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public User()
+    {
+
     }
 
     public String getName(){
