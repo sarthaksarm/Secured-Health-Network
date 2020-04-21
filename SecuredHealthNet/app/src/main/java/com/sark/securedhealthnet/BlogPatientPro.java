@@ -1,31 +1,47 @@
 package com.sark.securedhealthnet;
 
-public class BlogPatientPro {
-    private String Name;
-    private String Age;
-    private String Location;
-    private String Phone;
-    private String Date;
-    private String registered;
-    private String report;
+import java.util.HashMap;
 
-    public BlogPatientPro(String Age, String Date, String Location, String Name, String Phone, String registered, String report) {
+public class BlogPatientPro {
+    int Appointment;
+    String Phone;
+    private String Name;
+    private String Location;
+
+    public BlogPatientPro()
+    {
+
+    }
+    public BlogPatientPro(String Location, String Name, String Phone, int Appointment){
         this.Name = Name;
-        this.Age = Age;
         this.Location = Location;
         this.Phone=Phone;
-        this.Date=Date;
-        this.registered=registered;
-        this.report=report;
+        this.Appointment=Appointment;
     }
 
-    public String getReport() {
-        return report;
+    public int getAppointment() {
+        return Appointment;
     }
 
-    public void setReport(String report) {
-        this.report = report;
+    public void setAppointment(int appointment) {
+        Appointment = appointment;
     }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+//    public HashMap<String, String> getReports() {
+//        return reports;
+//    }
+//
+//    public void setReports(HashMap<String, String> reports) {
+//        this.reports = reports;
+//    }
 
     public String getName() {
         return Name;
@@ -43,40 +59,4 @@ public class BlogPatientPro {
         Location = location;
     }
 
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
-
-    public String getAge() {
-        return Age;
-    }
-
-    public void setAge(String age) {
-        Age = age;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        Date = date;
-    }
-
-    public String getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(String registered) {
-        this.registered = registered;
-    }
-
-    public BlogPatientPro()
-    {
-
-    }
 }

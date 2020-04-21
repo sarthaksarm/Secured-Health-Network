@@ -73,7 +73,7 @@ public class UserProfile extends AppCompatActivity {
                     if(checkbtn.getText().equals("ACCEPT"))
                         value=1;
 
-                    reforig.child(phone).child("Appointment Acceptance").setValue(value);
+                    reforig.child(phone).child("Appointment").setValue(value);
 
                     if(value==1)
                     Toast.makeText(UserProfile.this, "Accepted", Toast.LENGTH_SHORT).show();

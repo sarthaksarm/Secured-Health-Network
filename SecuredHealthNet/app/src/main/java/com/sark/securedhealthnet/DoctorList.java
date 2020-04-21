@@ -181,7 +181,7 @@ public class DoctorList extends AppCompatActivity {
                                             refsave.child("patients").child(uid).child("Name").setValue(name);
 //                                            refsave.child("patients").child(uid).child("Location").setValue(area);
 //                                            refsave.child("patients").child(uid).child("Phone").setValue(uphone);
-                                            refsave.child("patients").child(uid).child("Appointment Acceptance").setValue(0);
+                                            refsave.child("patients").child(uid).child("Appointment").setValue(0);
                                             refsave.child("patients").child(uid).child("report").child(date).child("desc").setValue(desc);  //desc
                                             refsave.child("patients").child(uid).child("report").child(date).child("title").setValue(title);  //title
 
