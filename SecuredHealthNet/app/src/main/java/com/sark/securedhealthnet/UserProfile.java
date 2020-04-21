@@ -49,7 +49,7 @@ public class UserProfile extends AppCompatActivity {
         setphone(pos);
 
 //      final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
-        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
 
         nametxt=findViewById(R.id.nameedittxt);
@@ -90,7 +90,7 @@ public class UserProfile extends AppCompatActivity {
 
     public void setphone(final int pos)
     {
-        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+        final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
         reforig.addValueEventListener(new ValueEventListener() {
             @Override
@@ -123,7 +123,7 @@ public class UserProfile extends AppCompatActivity {
     {
         //        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
-        final DatabaseReference refpatient=FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients").child(phone).child("report");
+        final DatabaseReference refpatient=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients").child(phone).child("report");
 
                     try {
                         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogReport, PatientsReports.BlogViewHolder>

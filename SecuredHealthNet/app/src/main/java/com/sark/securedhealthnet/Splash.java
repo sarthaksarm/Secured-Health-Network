@@ -42,6 +42,7 @@ public class Splash extends AwesomeSplash {
 
     @Override
     public void animationsFinished() {
+        //Login correctly
         Intent intent = new Intent(Splash.this, PhoneLogin.class);
         startActivity(intent);
         finish();

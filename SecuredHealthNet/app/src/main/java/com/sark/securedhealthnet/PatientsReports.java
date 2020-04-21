@@ -50,7 +50,7 @@ public class PatientsReports extends AppCompatActivity {
 //      reference= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("report");
 //      final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
-        final DatabaseReference reforig = FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
+        final DatabaseReference reforig = FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
                     try {
                         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder>
