@@ -126,13 +126,8 @@ public class Register extends AppCompatActivity {
         return secretKeySpec;
     }
 
-
-
-
-
-
-
     private void signupfn(String phonenum) {
+
         String nameet = name.getText().toString()+"";
         String ageet = age.getText().toString()+"";
         String areaet = area.getText().toString()+"";
@@ -196,36 +191,30 @@ public class Register extends AppCompatActivity {
             dbHelper db=new dbHelper(this);
             SQLiteDatabase db1;
 
-
            try {
-             //  Toast.makeText(Register.this,"Profession= "+prof,Toast.LENGTH_SHORT).show();
-
                ref= FirebaseDatabase.getInstance().getReference(prof);
 
                String id = phonenum;
                final String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
-//
 //               try
 //               {
-////                        nameencypt=encrypt(nameet);
-////                        ageencrypt=encrypt(ageet);
-////                        dateencrypt=encrypt(date);
-////                        phoneencrypt=encrypt(phonenum);
-////                        areaencrypt=encrypt(areaet);
-//                 /*  nameencypt=AESUtils.encrypt(nameet);
+//                        nameencypt=encrypt(nameet);
+//                        ageencrypt=encrypt(ageet);
+//                        dateencrypt=encrypt(date);
+//                        phoneencrypt=encrypt(phonenum);
+//                        areaencrypt=encrypt(areaet);
+
+//                   nameencypt=AESUtils.encrypt(nameet);
 //                   ageencrypt=AESUtils.encrypt(ageet);
 //                   dateencrypt=AESUtils.encrypt(date);
 //                   phoneencrypt=AESUtils.encrypt(phonenum);
-//                   areaencrypt=AESUtils.encrypt(areaet);*/
-//
-//
+//                   areaencrypt=AESUtils.encrypt(areaet);
 //               }
 //               catch (Exception e)
 //               {
 //                   e.printStackTrace();
 //               }
-
 
               /* ref.child(id).child("Name").setValue(nameencypt);
                ref.child(id).child("Age").setValue(ageencrypt);
@@ -233,16 +222,14 @@ public class Register extends AppCompatActivity {
                ref.child(id).child("Phone").setValue(phoneencrypt);
                ref.child(id).child("Date").setValue(dateencrypt);
                ref.child(id).child("registered").setValue("0");
-
                */
+
                ref.child(id).child("Name").setValue(nameet);
                ref.child(id).child("Age").setValue(ageet);
                ref.child(id).child("Location").setValue(areaet);
                ref.child(id).child("Phone").setValue(phonenum);
                ref.child(id).child("Date").setValue(date);
                ref.child(id).child("registered").setValue("0");
-
-
 
                View parentLayout = findViewById(android.R.id.content);
                Snackbar snackbar = Snackbar.make(parentLayout,"Registered successfully!",Snackbar.LENGTH_LONG);
@@ -258,19 +245,16 @@ public class Register extends AppCompatActivity {
                        {
                            Intent i = new Intent(Register.this, DoctorHome.class);
                            startActivity(i);
-
                        }
                        else if(prof.equals("users"))
                        {
                            Intent i = new Intent(Register.this, MainActivity.class);
                            startActivity(i);
-
                        }
                        else
                        {
-                           Intent i = new Intent(Register.this, MainActivity.class); //StaffActivity
+                           Intent i = new Intent(Register.this, MainActivity.class);    //StaffActivity
                            startActivity(i);
-
                        }
 
                 user.setName(nameet);

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PhoneLogin"> </activity>
-        <activity android:name=".Splash">
+        <activity android:name=".MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,7 @@
         <activity android:name=".reminder" />
         <activity android:name=".about" />
         <activity android:name=".WritingActivity" />
-        <activity android:name=".MapsActivity" />
+        <activity android:name=".Splash" />
         <activity android:name=".AlarmMe" />
         <activity android:name=".AlarmNotification" />
         <activity android:name=".DoctorHome" />
