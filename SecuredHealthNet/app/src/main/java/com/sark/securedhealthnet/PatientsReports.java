@@ -59,6 +59,7 @@ public class PatientsReports extends AppCompatActivity {
                             protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogPatientPro model, int position) {
                                 viewHolder.setTitle(model.getName());
                                 viewHolder.setDesc(model.getLocation());
+                                viewHolder.setDate(model.getDate());
 
                                 // viewHolder.setImage(getApplicationContext(), model.getImage());
                             }
@@ -108,63 +109,6 @@ public class PatientsReports extends AppCompatActivity {
 
                 }
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//
-////        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
-//        final DatabaseReference reforig=FirebaseDatabase.getInstance().getReference("doctors").child("+918095030481").child("patients");
-//
-//        reforig.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                for(DataSnapshot ds: dataSnapshot.getChildren())
-//                {
-//                    String userno= ds.getKey();
-//                    reference= reforig.child(userno).child("report");
-//                    DatabaseReference refpatient = FirebaseDatabase.getInstance().getReference("users").child(userno);
-//
-//                    try {
-//                        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder>
-//                                (BlogPatientPro.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, refpatient) {
-//                            @Override
-//                            protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogPatientPro model, int position) {
-//                                viewHolder.setTitle(model.getName());
-//                                viewHolder.setDesc(model.getLocation());
-//
-//                                // viewHolder.setImage(getApplicationContext(), model.getImage());
-//                            }
-//
-
-//                        };
-//                    }
-//                    catch (Exception e) {
-//                        Intent i=new Intent(PatientsReports.this,MainActivity.class);
-//                        startActivity(i);
-//
-//                        Toast.makeText(PatientsReports.this, "Exception: "+e, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                try{
-//                    recyclerView.setAdapter(firebaseRecyclerAdapter);
-//                }
-//                catch (Exception e)
-//                {
-//                    Intent i=new Intent(PatientsReports.this,MainActivity.class);
-//                    startActivity(i);
-//
-//                    Toast.makeText(PatientsReports.this, "Exception1: "+e, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View mview;
 
@@ -173,6 +117,11 @@ public class PatientsReports extends AppCompatActivity {
             mview = itemView;
         }
 
+        public void setDate(String Date)
+        {
+            TextView date=mview.findViewById(R.id.item_date);
+            date.setText(Date);
+        }
         public void setTitle(String title) {
             TextView post_title = (TextView) mview.findViewById(R.id.item_title);
             post_title.setText(title);

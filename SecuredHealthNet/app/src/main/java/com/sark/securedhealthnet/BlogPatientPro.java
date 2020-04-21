@@ -7,16 +7,26 @@ public class BlogPatientPro {
     String Phone;
     private String Name;
     private String Location;
+    String Date;
 
     public BlogPatientPro()
     {
 
     }
-    public BlogPatientPro(String Location, String Name, String Phone, int Appointment){
+    public BlogPatientPro(String Location, String Name, String Phone, int Appointment, String Date){
         this.Name = Name;
         this.Location = Location;
         this.Phone=Phone;
         this.Appointment=Appointment;
+        this.Date=Date;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 
     public int getAppointment() {

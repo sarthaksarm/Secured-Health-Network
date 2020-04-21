@@ -19,7 +19,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DoctorHome">
+        <activity android:name=".PhoneLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +32,7 @@
         <activity android:name=".MapsActivity" />
         <activity android:name=".AlarmMe" />
         <activity android:name=".AlarmNotification" />
-        <activity android:name=".PhoneLogin" />
+        <activity android:name=".DoctorHome" />
         <activity android:name=".PatientsReports" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />

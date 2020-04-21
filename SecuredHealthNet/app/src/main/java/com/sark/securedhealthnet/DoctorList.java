@@ -136,7 +136,7 @@ public class DoctorList extends AppCompatActivity {
                 public void onClick(final View v) {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                    builder.setMessage("Are you sure you want to send report to this doctor and set appointment?");
+                    builder.setMessage("Are you sure you want to send report to this doctor and request appointment?");
                     builder.setCancelable(false);
 
                     builder.setNegativeButton("Send", new DialogInterface.OnClickListener() {
@@ -144,7 +144,7 @@ public class DoctorList extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int which) {
 
                             final int pos= getLayoutPosition();
-                            Toast.makeText(v.getContext(), "Report sent!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Report sent! Please wait for Doctor to accept appointment!", Toast.LENGTH_SHORT).show();
 
                             DatabaseReference ref=FirebaseDatabase.getInstance().getReference("doctors");
 
@@ -175,10 +175,11 @@ public class DoctorList extends AppCompatActivity {
                                             String key=ds.getKey().toString();        //phone number of doctor selected
                                             String uid=uphone+"";
                                             DatabaseReference refsave=FirebaseDatabase.getInstance().getReference("doctors").child(key);
-                                            final String date = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(new Date());
+                                            final String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
                                             String ids=System.currentTimeMillis()+"";
                                             refsave.child("patients").child(uid).child("Name").setValue(name);
+                                            refsave.child("patients").child(uid).child("Date").setValue(date);
 //                                            refsave.child("patients").child(uid).child("Location").setValue(area);
 //                                            refsave.child("patients").child(uid).child("Phone").setValue(uphone);
                                             refsave.child("patients").child(uid).child("Appointment").setValue(0);

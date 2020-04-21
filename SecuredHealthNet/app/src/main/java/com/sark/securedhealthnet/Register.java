@@ -203,7 +203,7 @@ public class Register extends AppCompatActivity {
                ref= FirebaseDatabase.getInstance().getReference(prof);
 
                String id = phonenum;
-               final String date = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(new Date());
+               final String date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault()).format(new Date());
 
 //
 //               try
