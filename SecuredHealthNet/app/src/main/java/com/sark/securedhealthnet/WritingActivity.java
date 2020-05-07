@@ -114,8 +114,8 @@ public class WritingActivity extends AppCompatActivity {
             }
         });
 
-        titleEditText = (EditText)findViewById(R.id.titleEditText);
-        contentEditText =  findViewById(R.id.contentEditText) ;
+//        titleEditText = (EditText)findViewById(R.id.titleEditText);
+//        contentEditText =  findViewById(R.id.contentEditText) ;
     }
 
     @Override

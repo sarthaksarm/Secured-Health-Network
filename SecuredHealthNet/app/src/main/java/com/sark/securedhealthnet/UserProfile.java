@@ -96,7 +96,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(UserProfile.this,Prescription.class);
-                i.putExtra("pos",id);
+                i.putExtra("phone",phone);
                 startActivity(i);
             }
         });
