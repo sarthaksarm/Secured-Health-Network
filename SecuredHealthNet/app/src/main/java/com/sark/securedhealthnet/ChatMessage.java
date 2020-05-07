@@ -1,41 +1,51 @@
 package com.sark.securedhealthnet;
+import java.util.Date;
 
+public class ChatMessage{
+    private String messageText;
+    private String messageUser;
+    private String messageUserId;
+    private long messageTime;
 
-/**
- * Created by beast on 14/4/17.
- */
-
-public class ChatMessage {
-
-    private String msgText;
-    private String msgUser;
-
-
-
-    public ChatMessage(String msgText, String msgUser){
-        this.msgText = msgText;
-        this.msgUser = msgUser;
-
+    public ChatMessage(String messageText, String messageUser, String messageUserId) {
+        this.messageText = messageText;
+        this.messageUser = messageUser;
+        messageTime = new Date().getTime();
+        this.messageUserId = messageUserId;
     }
-
 
     public ChatMessage(){
-
     }
 
-    public String getMsgText() {
-        return msgText;
+    public String getMessageUserId() {
+        return messageUserId;
     }
 
-    public void setMsgText(String msgText) {
-        this.msgText = msgText;
+    public void setMessageUserId(String messageUserId) {
+        this.messageUserId = messageUserId;
     }
 
-    public String getMsgUser() {
-        return msgUser;
+    public String getMessageText() {
+        return messageText;
     }
 
-    public void setMsgUser(String msgUser) {
-        this.msgUser = msgUser;
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public String getMessageUser() {
+        return messageUser;
+    }
+
+    public void setMessageUser(String messageUser) {
+        this.messageUser = messageUser;
+    }
+
+    public long getMessageTime() {
+        return messageTime;
+    }
+
+    public void setMessageTime(long messageTime) {
+        this.messageTime = messageTime;
     }
 }

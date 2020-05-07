@@ -21,6 +21,7 @@
         <activity android:name=".about" />
         <activity android:name=".WritingActivity" />
         <activity android:name=".Splash" />
+        <activity android:name=".ChatMain" />
         <activity android:name=".AlarmMe" />
         <activity android:name=".AlarmNotification" />
         <activity android:name=".DoctorHome" />
