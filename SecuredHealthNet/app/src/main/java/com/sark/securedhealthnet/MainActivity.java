@@ -85,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick5(View view)
     {
-        Toast.makeText(MainActivity.this,"Work in progress!",Toast.LENGTH_LONG).show();
-
+        Intent i;
+        i = new Intent(this, ChatMain.class);
+        startActivity(i);
     }
 
     public void onClick6(View view)

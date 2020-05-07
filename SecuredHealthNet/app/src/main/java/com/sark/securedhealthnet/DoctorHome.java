@@ -34,9 +34,9 @@ public class DoctorHome extends AppCompatActivity {
 
     public void onClickchat(View view)
     {
-//        Intent i;
-//        i = new Intent(this, PatientsReports.class);
-//        startActivity(i);
+        Intent i;
+        i = new Intent(this, ChatMain.class);
+        startActivity(i);
 
     }
     public void onClickabout(View view)
