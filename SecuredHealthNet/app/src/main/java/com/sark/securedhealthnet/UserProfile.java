@@ -95,9 +95,35 @@ public class UserProfile extends AppCompatActivity {
         preciptbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserProfile.this,Prescription.class);
-                i.putExtra("phone",phone);
-                startActivity(i);
+
+                final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
+
+                reforig.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        int j=0;
+
+                        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                            if (j == pos) {
+                                //madi
+                                String phonenum = ds.getKey();
+                                phone=phonenum;
+
+                                Intent i=new Intent(UserProfile.this,Prescription.class);
+                                i.putExtra("phone",phone);
+                                startActivity(i);
+                                break;
+                            } else
+                                j++;
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

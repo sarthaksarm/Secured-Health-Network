@@ -15,7 +15,7 @@
         android:paddingTop="20dp"
         android:paddingEnd="16dp"
         android:weightSum="800"
-        tools:context=".WritingActivity">
+        tools:context=".Prescription">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
