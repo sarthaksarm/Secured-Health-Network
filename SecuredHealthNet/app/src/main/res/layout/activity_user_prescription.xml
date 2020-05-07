@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@color/mic_button_halo"
+    tools:context=".UserProfile"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgicon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/about"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/namelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:layout_below="@+id/imgicon"
+            >
+
+            <TextView
+                android:id="@+id/nametxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="serif"
+                android:textSize="26dp"
+                />
+
+            <TextView
+                android:id="@+id/nameedittxt"
+                android:layout_marginStart="100dp"
+                android:layout_width="match_parent"
+                android:text=" "
+                android:textStyle="bold"
+                android:textSize="24dp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/agelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/namelayout"
+            >
+
+            <TextView
+                android:id="@+id/agetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:fontFamily="serif"
+                android:textSize="26dp"
+                />
+
+            <TextView
+                android:id="@+id/ageedittxt"
+                android:layout_marginStart="125dp"
+                android:layout_width="wrap_content"
+                android:textStyle="bold"
+                android:text=" "
+                android:textSize="24dp"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/locatlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/agelayout"
+            >
+
+            <TextView
+                android:id="@+id/locattxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:fontFamily="serif"
+                android:textSize="26dp"
+                />
+
+            <TextView
+                android:id="@+id/locatedittxt"
+                android:layout_marginStart="65dp"
+                android:layout_width="wrap_content"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:text=" "
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/locatlayout"
+            >
+
+            <TextView
+                android:id="@+id/datetimetxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number "
+                android:fontFamily="serif"
+                android:textSize="26dp"
+                />
+
+            <TextView
+                android:id="@+id/phonedittxt"
+                android:layout_marginStart="65dp"
+                android:layout_width="wrap_content"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:text=" "
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/presectxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/datetime"
+            android:text="Prescription:"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:background="#000"
+            android:id="@+id/prescripheadtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/presectxt"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            android:gravity="center"
+            android:textStyle="bold|italic"
+            android:textColor="@color/Golden"
+            android:layout_marginTop="30dp"
+            android:text="loading..."
+            />
+
+        <TextView
+            android:background="#000"
+            android:id="@+id/prescripdetailstxt"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:textColor="@color/Golden"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prescripheadtxt"
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            android:text="loading..."
+            />
+<!--        <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/healthrecordtxt"-->
+<!--            >-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/recycler_viewreport"-->
+<!--                />-->
+
+<!--        </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
+
+    </RelativeLayout>
+
+
+</ScrollView>

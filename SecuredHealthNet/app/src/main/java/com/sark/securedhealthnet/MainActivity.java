@@ -79,21 +79,21 @@ public class MainActivity extends AppCompatActivity {
     public void onClick4(View view)
     {
         Intent i;
-        i = new Intent(this, reminder.class);
+        i = new Intent(this, UserPrescription.class);
         startActivity(i);
     }
 
     public void onClick5(View view)
     {
         Intent i;
-        i = new Intent(this, ChatMain.class);
+        i = new Intent(this, reminder.class);
         startActivity(i);
     }
 
     public void onClick6(View view)
     {
         Intent i;
-        i = new Intent(this, about.class);
+        i = new Intent(this, ChatMain.class);
         startActivity(i);
     }
 

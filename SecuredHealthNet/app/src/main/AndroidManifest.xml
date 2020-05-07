@@ -9,8 +9,9 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Prescription"></activity>
-        <activity android:name=".PhoneLogin"></activity>
+        <activity android:name=".UserPrescription"></activity>
+        <activity android:name=".Prescription" />
+        <activity android:name=".PhoneLogin" />
         <activity android:name=".MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,14 +41,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-Lh6HOjbTmwFx1GyTcQiJmBdyViIf5IE" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

@@ -45,8 +45,7 @@ String phone;
                 contentWritingRef = FirebaseDatabase.getInstance().getReference("users");
                 try
                 {
-                    titleRef = contentWritingRef.child(phone).child("report").child(id);
-
+                    titleRef = contentWritingRef.child(phone).child("prescription");
                     String sTitle = titleEditText.getText().toString().trim();
                     String content = contentEditText.getText().toString().trim();
 
@@ -62,10 +61,10 @@ String phone;
 
                         Intent intent = new Intent(Prescription.this, MainActivity.class);
                         Toast.makeText(Prescription.this, "Prescription Sent successfully!", Toast.LENGTH_LONG).show();
-
                         startActivity(intent);
                     }
                 }
+
                 catch (Exception e)
                 {
                     View parentlayout = findViewById(android.R.id.content);
@@ -76,7 +75,6 @@ String phone;
                 }
             }
         });
-
     }
 
     @Override
