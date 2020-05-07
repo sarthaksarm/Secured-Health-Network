@@ -242,7 +242,7 @@
                             android:id="@+id/bottxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="CHAT BOX"
+                            android:text="Public Forum"
                             android:textAlignment="center"
                             android:textColor="#0e0e0e"
                             android:textSize="19sp"

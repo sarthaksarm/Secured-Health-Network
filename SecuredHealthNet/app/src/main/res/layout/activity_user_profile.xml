@@ -117,12 +117,42 @@
             />
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/locatlayout"
+        >
+
+        <TextView
+            android:id="@+id/datetimetxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submission Time "
+            android:fontFamily="serif"
+            android:textSize="26dp"
+            />
+
+        <TextView
+            android:id="@+id/datetimedittxt"
+            android:layout_marginStart="65dp"
+            android:layout_width="wrap_content"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:text=" "
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/appointlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/locatlayout"
+        android:layout_below="@+id/datetime"
         android:orientation="horizontal"
         android:gravity="center"
         android:layout_marginTop="30dp"
@@ -167,6 +197,7 @@
 
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/healthrecordtxt"
         android:layout_width="wrap_content"
@@ -192,7 +223,18 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
+    <Button
+        android:id="@+id/prescripbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Submit Prescription "
+        android:textColor="@color/Golden"
+        android:background="#000"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/healthrecordtxt"
+        android:textSize="20dp"
+        android:fontFamily="serif"
+        />
 </RelativeLayout>
 
 

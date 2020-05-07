@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,7 +28,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class UserProfile extends AppCompatActivity {
-    TextView nametxt,agetxt,locattxt;
+    TextView nametxt,agetxt,locattxt,datetimetxt;
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
     ProgressBar progressBar;
@@ -33,6 +36,7 @@ public class UserProfile extends AppCompatActivity {
     RadioGroup rg;
     RadioButton rbaccept,rbreject;
     String phone;
+    Button preciptbtn;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class UserProfile extends AppCompatActivity {
         gridLayoutManager=new GridLayoutManager(this,2,RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        String id=getIntent().getExtras().get("pos").toString();
+        final String id=getIntent().getExtras().get("pos").toString();
 
         final int pos=Integer.parseInt(id);
         setphone(pos);
@@ -51,13 +55,15 @@ public class UserProfile extends AppCompatActivity {
 //      final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
         final DatabaseReference reforig= FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients");
 
-
         nametxt=findViewById(R.id.nameedittxt);
         agetxt=findViewById(R.id.ageedittxt);
+
         locattxt=findViewById(R.id.locatedittxt);
         rg=findViewById(R.id.appointradiogrp);
         rbaccept=findViewById(R.id.setrdbtn);
         rbreject=findViewById(R.id.unsetrdbtn);
+        datetimetxt=findViewById(R.id.datetimedittxt);
+        preciptbtn=findViewById(R.id.prescripbtn);
 
         rg.clearCheck();
 
@@ -86,6 +92,15 @@ public class UserProfile extends AppCompatActivity {
 
         });
 
+        preciptbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(UserProfile.this,Prescription.class);
+                i.putExtra("pos",id);
+                startActivity(i);
+            }
+        });
+
     }
 
     public void setphone(final int pos)
@@ -105,12 +120,30 @@ public class UserProfile extends AppCompatActivity {
 
                         load(phone);
                         loadreports(phone);
+                        loaddatetime(phone);
 
                         break;
                     } else
                         j++;
 
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void loaddatetime(final String phone)
+    {
+        final DatabaseReference ref=FirebaseDatabase.getInstance().getReference("doctors").child(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()).child("patients").child(phone).child("Date");
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String date=dataSnapshot.getValue().toString();
+                datetimetxt.setText(date);
             }
 
             @Override

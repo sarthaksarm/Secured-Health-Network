@@ -9,8 +9,9 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PhoneLogin"> </activity>
-        <activity android:name=".Splash">
+        <activity android:name=".Prescription"></activity>
+        <activity android:name=".PhoneLogin"></activity>
+        <activity android:name=".MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,7 @@
         <activity android:name=".about" />
         <activity android:name=".WritingActivity" />
         <activity android:name=".ChatMain" />
-        <activity android:name=".MapsActivity" />
+        <activity android:name=".Splash" />
         <activity android:name=".AlarmMe" />
         <activity android:name=".AlarmNotification" />
         <activity android:name=".DoctorHome" />
@@ -39,14 +40,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-Lh6HOjbTmwFx1GyTcQiJmBdyViIf5IE" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

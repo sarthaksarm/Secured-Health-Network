@@ -111,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Button btnHospital = (Button) findViewById(R.id.btnHospital);
         btnHospital.setOnClickListener(new View.OnClickListener() {
-            String Hospital = "Hospitals"; //"Electrical%20Substation"
+            String Hospital = "hospital"; //"Electrical%20Substation"
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
@@ -124,7 +124,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("onClick", url);
                 GetNearbyPlacesData getNearbyPlacesData = new GetNearbyPlacesData();
                 getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(MapsActivity.this,"Nearby Hospitals", Toast.LENGTH_LONG).show();
+                Toast.makeText(MapsActivity.this,"Nearby Hospitals, url= "+url, Toast.LENGTH_LONG).show();
 
 //                mGeoDataApi.getPlaceById(Hospital).addOnCompleteListener(new OnCompleteListener<PlaceBufferResponse>() {
 //                    @Override
@@ -171,7 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
-        googlePlacesUrl.append("&type=" + nearbyPlace);
+        googlePlacesUrl.append("&types=" + nearbyPlace);
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyA-Lh6HOjbTmwFx1GyTcQiJmBdyViIf5IE");
         Log.d("getUrl", googlePlacesUrl.toString());
