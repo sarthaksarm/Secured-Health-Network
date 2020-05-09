@@ -59,7 +59,7 @@ String phone;
                         titleRef.child("highlights").setValue(sTitle);
                         titleRef.child("details").setValue(content);
 
-                        Intent intent = new Intent(Prescription.this, MainActivity.class);
+                        Intent intent = new Intent(Prescription.this, DoctorHome.class);
                         Toast.makeText(Prescription.this, "Prescription Sent successfully!", Toast.LENGTH_LONG).show();
                         startActivity(intent);
                     }
