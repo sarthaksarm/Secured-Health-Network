@@ -131,7 +131,7 @@
             android:id="@+id/datetimetxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submission Time "
+            android:text="Time "
             android:fontFamily="serif"
             android:textSize="26dp"
             />

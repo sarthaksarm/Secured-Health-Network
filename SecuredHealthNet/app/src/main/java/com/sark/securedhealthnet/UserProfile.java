@@ -110,7 +110,7 @@ public class UserProfile extends AppCompatActivity {
                                 phone=phonenum;
 
                                 Intent i=new Intent(UserProfile.this,Prescription.class);
-                                i.putExtra("phone",phone);
+                                i.putExtra("pos",phone);
                                 startActivity(i);
                                 break;
                             } else
