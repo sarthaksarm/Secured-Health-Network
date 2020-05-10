@@ -12,8 +12,6 @@ public class DoctorHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home);
-
-
     }
 
     public void onClickpatients(View view)
@@ -21,7 +19,6 @@ public class DoctorHome extends AppCompatActivity {
         Intent i;
         i = new Intent(this, PatientsReports.class);
         startActivity(i);
-
     }
 
     public void onClickremind(View view)

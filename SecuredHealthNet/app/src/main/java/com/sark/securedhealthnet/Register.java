@@ -253,7 +253,7 @@ public class Register extends AppCompatActivity {
                        }
                        else
                        {
-                           Intent i = new Intent(Register.this, MainActivity.class);    //StaffActivity
+                           Intent i = new Intent(Register.this, StaffHome.class);    //StaffActivity
                            startActivity(i);
                        }
 

@@ -63,7 +63,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginBottom="10dp"
-                    android:onClick="onClick1"
+                    android:onClick="onClickreport"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="20dp">
 
@@ -85,7 +85,7 @@
                             android:id="@+id/predictortxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="SUBMIT REPORT"
+                            android:text="REPORT CASE"
                             android:textAlignment="center"
                             android:textColor="#0e0e0e"
                             android:textSize="17sp"
@@ -100,7 +100,7 @@
                     android:layout_columnWeight="2"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="16dp"
-                    android:onClick="onClick2"
+                    android:onClick="onClickpat"
                     android:layout_marginRight="16dp"
                     android:layout_rowWeight="2"
                     app:cardCornerRadius="8dp"
@@ -117,16 +117,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145dp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/hospitalsnearby" />
+                            android:background="@drawable/patientstaff" />
 
                         <TextView
                             android:id="@+id/infotxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="FIND HOSPITALS"
+                            android:text="PATIENTS DETAILS"
                             android:textAlignment="center"
                             android:textColor="#0e0e0e"
-                            android:textSize="17sp"
+                            android:textSize="16sp"
                             android:textStyle="bold"
                             />
                     </LinearLayout>
@@ -140,7 +140,7 @@
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:onClick="onClick3"
+                    android:onClick="onClickdoc"
                     android:layout_rowWeight="2"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="20dp">
@@ -156,7 +156,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="145sp"
                             android:layout_gravity="center_horizontal"
-                            android:background="@drawable/doctors" />
+                            android:background="@drawable/doctorsstaff" />
 
                         <TextView
                             android:id="@+id/upltxt"
@@ -171,45 +171,7 @@
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/prescriptcard"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="2"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:onClick="onClick4"
-                    android:layout_marginRight="16dp"
-                    android:layout_rowWeight="2"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="20dp">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_margin="1dp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/prescriptimg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="145dp"
-                            android:layout_gravity="center_horizontal"
-                            android:background="@drawable/prescription" />
-
-                        <TextView
-                            android:id="@+id/prescripttxt"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="PRESCRIPTIONS "
-                            android:textAlignment="center"
-                            android:textColor="#0e0e0e"
-                            android:textSize="17sp"
-                            android:textStyle="bold"
-                            />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/remindercard"
                     android:layout_width="0dp"
@@ -217,7 +179,7 @@
                     android:layout_columnWeight="2"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="16dp"
-                    android:onClick="onClick5"
+                    android:onClick="onClickrem"
                     android:layout_marginRight="16dp"
                     android:layout_rowWeight="2"
                     app:cardCornerRadius="8dp"
@@ -257,7 +219,7 @@
                     android:layout_columnWeight="2"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="16dp"
-                    android:onClick="onClick6"
+                    android:onClick="onClickch"
                     android:layout_marginRight="16dp"
                     android:layout_rowWeight="2"
                     app:cardCornerRadius="8dp"
@@ -289,43 +251,43 @@
                             />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:id="@+id/aboutcard"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="0dp"-->
-<!--                    android:layout_columnWeight="2"-->
-<!--                    android:layout_marginBottom="16dp"-->
-<!--                    android:layout_marginLeft="16dp"-->
-<!--                    android:layout_marginRight="16dp"-->
-<!--                    android:onClick="onClick6"-->
-<!--                    android:layout_rowWeight="2"-->
-<!--                    app:cardCornerRadius="8dp"-->
-<!--                    app:cardElevation="20dp">-->
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/aboutcard"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_columnWeight="2"
+                                    android:layout_marginBottom="16dp"
+                                    android:layout_marginLeft="16dp"
+                                    android:layout_marginRight="16dp"
+                                    android:onClick="onClickab"
+                                    android:layout_rowWeight="2"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="20dp">
 
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center_horizontal|center_vertical"-->
-<!--                        android:layout_margin="1dp"-->
-<!--                        android:orientation="vertical">-->
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_horizontal|center_vertical"
+                                        android:layout_margin="1dp"
+                                        android:orientation="vertical">
 
-<!--                        <ImageView-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="145dp"-->
-<!--                            android:background="@drawable/about" />-->
+                                        <ImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="145dp"
+                                            android:background="@drawable/about" />
 
-<!--                        <TextView-->
-<!--                            android:id="@+id/abouttxt"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:text="ABOUT"-->
-<!--                            android:textAlignment="center"-->
-<!--                            android:textColor="#0e0e0e"-->
-<!--                            android:textSize="19sp"-->
-<!--                            android:textStyle="bold" />-->
+                                        <TextView
+                                            android:id="@+id/abouttxt"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:text="ABOUT"
+                                            android:textAlignment="center"
+                                            android:textColor="#0e0e0e"
+                                            android:textSize="19sp"
+                                            android:textStyle="bold" />
 
-<!--                    </LinearLayout>-->
-<!--                </androidx.cardview.widget.CardView>-->
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
 
             </GridLayout>
 
