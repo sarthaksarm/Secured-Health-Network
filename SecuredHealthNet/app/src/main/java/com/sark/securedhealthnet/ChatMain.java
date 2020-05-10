@@ -1,6 +1,7 @@
 package com.sark.securedhealthnet;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class ChatMain extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
     private ListView listView;
     private String loggedInUserName = "";
+    private String uname="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +52,27 @@ public class ChatMain extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (input.getText().toString().trim().equals("")) {
+                if (input.getText().toString().trim().equals(""))
+                {
                     Toast.makeText(ChatMain.this, "Please enter some texts!", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else
+                {
+                    dbHelper db = new dbHelper(ChatMain.this);
+                    Cursor cursor = db.alldata();
+
+                    if (cursor.getCount() != 0) {
+                        while (cursor.moveToNext()) {
+                            uname = cursor.getString(1);
+                        }
+                    }
+
                     FirebaseDatabase.getInstance()
                             .getReference()
                             .child("Chats")
                             .push()
                             .setValue(new ChatMessage(input.getText().toString(),
-                                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                                    uname,
                                     FirebaseAuth.getInstance().getCurrentUser().getUid())
                             );
                     input.setText("");
