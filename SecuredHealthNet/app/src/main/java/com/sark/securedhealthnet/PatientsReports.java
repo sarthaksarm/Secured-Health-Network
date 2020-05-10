@@ -91,7 +91,7 @@ public class PatientsReports extends AppCompatActivity {
                         };
                     }
                     catch (DatabaseException e) {
-                        Intent i=new Intent(PatientsReports.this,MainActivity.class);
+                        Intent i=new Intent(PatientsReports.this,DoctorHome.class);
                         Log.e("EEEE",e+"");
                         try{
                             Thread.sleep(2000);

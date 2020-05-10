@@ -9,7 +9,9 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StaffHome"></activity>
+        <activity android:name=".StaffDoc"></activity>
+        <activity android:name=".StaffPat" />
+        <activity android:name=".StaffHome" />
         <activity android:name=".UserPrescription" />
         <activity android:name=".Prescription" />
         <activity android:name=".PhoneLogin" />
@@ -36,20 +38,19 @@
         <activity android:name=".Notification" />
         <activity android:name=".DoctorList" />
         <activity android:name=".UserProfile" />
-        <activity android:name=".PatientsAssocList" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA-Lh6HOjbTmwFx1GyTcQiJmBdyViIf5IE" />
     </application>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
 </manifest>

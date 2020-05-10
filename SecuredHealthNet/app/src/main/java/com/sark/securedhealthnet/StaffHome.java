@@ -12,10 +12,6 @@ public class StaffHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_home);
-
-
-
-
     }
 
 
@@ -26,11 +22,13 @@ public class StaffHome extends AppCompatActivity {
     }
     public void onClickpat(View view)
     {
-
+        Intent i=new Intent(StaffHome.this,StaffPat.class);
+        startActivity(i);
     }
     public void onClickdoc(View view)
     {
-
+        Intent i=new Intent(StaffHome.this,StaffDoc.class);
+        startActivity(i);
     }
     public void onClickrem(View view)
     {
