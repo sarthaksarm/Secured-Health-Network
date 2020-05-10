@@ -140,7 +140,7 @@
             android:id="@+id/datetimedittxt"
             android:layout_marginStart="65dp"
             android:layout_width="wrap_content"
-            android:textSize="24dp"
+            android:textSize="22dp"
             android:textStyle="bold"
             android:text=" "
             android:layout_height="wrap_content"
