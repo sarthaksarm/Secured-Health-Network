@@ -45,7 +45,7 @@ public class StaffDoc extends AppCompatActivity {
                     (Blog.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reforig) {
                 @Override
                 protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, Blog model, int position) {
-                    viewHolder.setTitle("Name: "+model.getName());
+                    viewHolder.setTitle("Name: Dr. "+model.getName());
                     viewHolder.setDesc("Area/Locality: "+model.getLocation());
                     viewHolder.setDate("Registration Time: "+model.getDate());
 
