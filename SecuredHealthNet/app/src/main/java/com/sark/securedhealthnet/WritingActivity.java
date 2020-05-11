@@ -118,12 +118,6 @@ public class WritingActivity extends AppCompatActivity {
 //        contentEditText =  findViewById(R.id.contentEditText) ;
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent i=new Intent(WritingActivity.this,MainActivity.class);
-        startActivity(i);
-        finish();
-    }
 }
 
 
