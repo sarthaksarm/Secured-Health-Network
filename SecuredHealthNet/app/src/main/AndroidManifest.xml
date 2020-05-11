@@ -9,8 +9,8 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StaffDoc"></activity>
-        <activity android:name=".StaffPat" />
+        <activity android:name=".StaffPat"/>
+        <activity android:name=".StaffDoc" />
         <activity android:name=".StaffHome" />
         <activity android:name=".UserPrescription" />
         <activity android:name=".Prescription" />

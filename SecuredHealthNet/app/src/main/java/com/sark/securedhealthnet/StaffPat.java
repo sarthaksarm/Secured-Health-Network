@@ -28,12 +28,13 @@ public class StaffPat extends AppCompatActivity {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     ProgressBar progressBar;
-    FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder> firebaseRecyclerAdapter;
+    FirebaseRecyclerAdapter<Blog, PatientsReports.BlogViewHolder> firebaseRecyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_pat);
+
         recyclerView=findViewById(R.id.recycler_view);
 
         GridLayoutManager gridLayoutManager =new GridLayoutManager(this,1,RecyclerView.VERTICAL,false);
@@ -42,14 +43,13 @@ public class StaffPat extends AppCompatActivity {
         final DatabaseReference reforig = FirebaseDatabase.getInstance().getReference("users");
 
         try {
-            firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<BlogPatientPro, PatientsReports.BlogViewHolder>
-                    (BlogPatientPro.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reforig) {
+            firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Blog, PatientsReports.BlogViewHolder>
+                    (Blog.class, R.layout.cardviewnotific, PatientsReports.BlogViewHolder.class, reforig) {
                 @Override
-                protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, BlogPatientPro model, int position) {
-                    viewHolder.setTitle(model.getName());
-                    viewHolder.setDesc(model.getLocation());
-                    viewHolder.setDate(model.getDate());
-
+                protected void populateViewHolder(PatientsReports.BlogViewHolder viewHolder, Blog model, int position) {
+                    viewHolder.setTitle("Name: "+model.getName());
+                    viewHolder.setDesc("Area/Locality: "+model.getLocation());
+                    viewHolder.setDate("Registration Time: "+model.getDate());
                 }
 
 //                @Override
@@ -108,7 +108,7 @@ public class StaffPat extends AppCompatActivity {
         public void setDate(String Date)
         {
             TextView date=mview.findViewById(R.id.item_date);
-            date.setText(Date);
+            date.setText("Registration Time: "+Date);
         }
         public void setTitle(String title) {
             TextView post_title = (TextView) mview.findViewById(R.id.item_title);
@@ -117,7 +117,7 @@ public class StaffPat extends AppCompatActivity {
 
         public void setDesc(String desc) {
             TextView post_desc = (TextView) mview.findViewById(R.id.item_desc);
-            post_desc.setText(desc);
+            post_desc.setText("Area/Locality: "+desc);
         }
     }
 }
