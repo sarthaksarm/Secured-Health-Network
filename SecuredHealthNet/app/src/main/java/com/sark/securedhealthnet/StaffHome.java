@@ -17,7 +17,7 @@ public class StaffHome extends AppCompatActivity {
 
     public void onClickreport(View view)
     {
-        Intent i=new Intent(StaffHome.this,WritingActivity.class);
+        Intent i=new Intent(StaffHome.this,StaffWrite.class);
         startActivity(i);
     }
     public void onClickpat(View view)
