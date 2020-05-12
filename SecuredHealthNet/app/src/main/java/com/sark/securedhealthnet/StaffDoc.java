@@ -122,4 +122,3 @@ public class StaffDoc extends AppCompatActivity {
         }
     }
 }
-
